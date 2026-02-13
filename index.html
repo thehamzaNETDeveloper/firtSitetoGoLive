@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+<title>For Hira ❤️</title>
+<style>
+/* BODY — soft gradient, perfect for mobile */
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
+  background: linear-gradient(145deg, #ff7a9e 0%, #f14c7e 100%);
+  color: white;
+  padding: 16px 10px;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* CARD — frosty glass, no cut-off */
+.card {
+  max-width: 400px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 24px 18px 28px;
+  border-radius: 36px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* NAME — big & warm */
+.name {
+  font-size: 32px;
+  font-weight: 800;
+  margin-bottom: 8px;
+  letter-spacing: -0.5px;
+  text-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* TYPING area */
+#typing {
+  font-size: 16px;
+  line-height: 1.4;
+  min-height: 70px;
+  margin: 8px 0 6px;
+  padding: 0 5px;
+  font-weight: 400;
+  background: rgba(255,255,255,0.1);
+  border-radius: 30px;
+  padding: 12px 12px;
+}
+
+/* URDU — subtle elegance */
+.urdu {
+  font-size: 16px;
+  margin: 12px 0 16px;
+  background: rgba(255,215,230,0.25);
+  padding: 10px 12px;
+  border-radius: 40px;
+  font-weight: 400;
+  direction: rtl;
+  unicode-bidi: embed;
+  word-spacing: 2px;
+}
+
+/* PERFECT PORTRAIT SLIDER — fixed ratio, no overflow */
+.slideshow {
+  width: 100%;
+  aspect-ratio: 3 / 4;        /* classic portrait */
+  border-radius: 26px;
+  overflow: hidden;
+  margin: 14px 0 16px;
+  background: #ffcfd7;
+  position: relative;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+  border: 3px solid rgba(255,255,240,0.6);
+}
+
+.slideshow img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;          /* covers area without stretching, may crop slightly but full bleed */
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  pointer-events: none;
+  border-radius: 22px;        /* matches inner border */
+}
+
+.slideshow img.active {
+  opacity: 1;
+  z-index: 2;
+}
+
+/* QUESTION */
+p {
+  margin: 14px 0 12px;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+/* BUTTONS */
+button {
+  padding: 12px 28px;
+  border: none;
+  border-radius: 40px;
+  margin: 6px 10px;
+  font-weight: 700;
+  font-size: 18px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  -webkit-tap-highlight-color: transparent;
+  border: 1px solid rgba(255,255,255,0.5);
+}
+
+button:active {
+  transform: scale(0.96);
+}
+
+.yes {
+  background: white;
+  color: #d62b62;
+  padding-left: 35px;
+  padding-right: 35px;
+}
+
+.no {
+  background: #ff4f81;
+  color: white;
+  position: relative;         /* changed by js to absolute, but base is relative */
+  display: inline-block;
+  transition: left 0.1s ease, top 0.1s ease;
+}
+
+/* RESULT area */
+#result {
+  margin-top: 22px;
+  font-size: 22px;
+  font-weight: 800;
+  background: rgba(255, 140, 170, 0.5);
+  padding: 12px 5px;
+  border-radius: 60px;
+  letter-spacing: 0.5px;
+}
+
+/* tiny extra for mobile reach */
+@media (max-width: 380px) {
+  .card { padding: 18px 12px; }
+  .name { font-size: 28px; }
+  button { padding: 10px 18px; margin: 4px 5px; }
+}
+</style>
+</head>
+<body>
+
+<div class="card">
+
+<div class="name">Hira ❤️</div>
+
+<p id="typing"></p>
+
+<p class="urdu">تم میری زندگی کی سب سے خوبصورت کہانی ہو ❤️</p>
+
+<!-- slideshow with your local images (full bleed) -->
+<div class="slideshow">
+  <img src="07092025.jpeg" class="slide active" alt="Hira beautiful">
+  <img src="IMG-20250728-WA0002.jpg" class="slide" alt="Hira smile">
+  <img src="IMG-20250728-WA0023.jpg" class="slide" alt="Hira smile">
+  <img src="IMG-20250805-WA0006.jpg" class="slide" alt="Hira smile">
+  <img src="IMG-20250716-WA0005.jpg" class="slide" alt="Hira smile">
+</div>
+
+<!-- Countdown section fully removed as requested -->
+
+<p>Will you stay crazy in love with me forever? 🥰</p>
+
+<button class="yes" id="yesBtn">YES ❤️</button>
+
+<button class="no" id="noBtn">No 😜</button>
+
+<p id="result"></p>
+
+</div>
+
+<script>
+(function() {
+  // ---- TYPING EFFECT ----
+  const text = "Every day with you feels magical. You are my peace, my happiness, my forever.";
+  let i = 0;
+  const typingElement = document.getElementById("typing");
+
+  function typing() {
+    if (i < text.length) {
+      typingElement.innerHTML += text.charAt(i);
+      i++;
+      setTimeout(typing, 45);
+    }
+  }
+  typing();
+
+  // ---- SLIDER (portraits) ----
+  let slides = document.querySelectorAll(".slide");
+  let currentIndex = 0;
+
+  // ensure only first is active initially
+  slides.forEach((img, idx) => {
+    if (idx === 0) img.classList.add("active");
+    else img.classList.remove("active");
+  });
+
+  function slider() {
+    slides.forEach(img => img.classList.remove("active"));
+    currentIndex = (currentIndex + 1) % slides.length;
+    slides[currentIndex].classList.add("active");
+    setTimeout(slider, 3400); // smooth transition
+  }
+
+  // start slider after a short delay
+  setTimeout(slider, 3400);
+
+  // ---- NO BUTTON RUNAWAY (mobile & mouse friendly) ----
+  const noBtn = document.getElementById("noBtn");
+  const yesBtn = document.getElementById("yesBtn");
+  const card = document.querySelector(".card");
+  card.style.position = 'relative';   // make card relative for absolute positioning of noBtn
+
+  // Function to move button randomly inside card
+  function moveNoButton() {
+    if (!noBtn || !card) return;
+
+    const cardRect = card.getBoundingClientRect();
+    const btnRect = noBtn.getBoundingClientRect();
+
+    const padding = 8;
+    const maxLeft = cardRect.width - btnRect.width - padding;
+    const maxTop = cardRect.height - btnRect.height - padding;
+
+    if (maxLeft <= 0 || maxTop <= 0) return;
+
+    const randomLeft = Math.floor(Math.random() * maxLeft);
+    const randomTop = Math.floor(Math.random() * maxTop);
+
+    noBtn.style.position = 'absolute';
+    noBtn.style.left = randomLeft + 'px';
+    noBtn.style.top = randomTop + 'px';
+    noBtn.style.right = 'auto';
+    noBtn.style.bottom = 'auto';
+  }
+
+  // Event listeners for runaway
+  function handleMoveAway(e) {
+    e.preventDefault();
+    moveNoButton();
+  }
+
+  noBtn.addEventListener('mouseover', handleMoveAway);
+  noBtn.addEventListener('touchstart', handleMoveAway, { passive: false });
+  noBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    moveNoButton();
+  });
+
+  // Adjust on resize if button is absolute
+  window.addEventListener('resize', () => {
+    if (noBtn.style.position === 'absolute') {
+      const cardRect = card.getBoundingClientRect();
+      const btnRect = noBtn.getBoundingClientRect();
+      if (cardRect.width > 0) {
+        // keep it inside: put near bottom right as a safe fallback
+        noBtn.style.left = (cardRect.width - btnRect.width - 20) + 'px';
+        noBtn.style.top = (cardRect.height - btnRect.height - 50) + 'px';
+      }
+    }
+  });
+
+  // ---- YES BUTTON ACTION (fixed: celebrate is now defined) ----
+  function celebrate() {
+    const resultEl = document.getElementById("result");
+    resultEl.innerHTML = "Yayyy! Forever with you 💍❤️";
+  }
+
+  // Attach celebrate to yes button (inline onclick had scope issue)
+  yesBtn.addEventListener('click', celebrate);
+
+  // ---- IMAGE FALLBACK (if images missing, show soft color) ----
+  const imgs = document.querySelectorAll('.slideshow img');
+  imgs.forEach(img => {
+    img.addEventListener('error', function() {
+      this.style.backgroundColor = '#ffb6c1';
+      this.style.objectFit = 'cover'; 
+    });
+  });
+
+})();
+</script>
+
+<!-- 
+  - countdown completely removed (no div, no js)
+  - celebrate function properly defined and attached to yes button
+  - all images remain full, slider works, no button runs away
+-->
+</body>
+</html>
