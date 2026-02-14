@@ -3,314 +3,230 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-<title>For Hira ❤️</title>
+<title>For Hira — My Forever ❤️</title>
 <style>
-/* BODY — soft gradient, perfect for mobile */
-* {
-  box-sizing: border-box;
-}
+/* ===== RESET & BODY ===== */
+* { margin:0; padding:0; box-sizing:border-box; }
 body {
-  margin: 0;
-  font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
-  background: linear-gradient(145deg, #ff7a9e 0%, #f14c7e 100%);
-  color: white;
-  padding: 16px 10px;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  -webkit-tap-highlight-color: transparent;
+  min-height:100vh;
+  display:flex; justify-content:center; align-items:center;
+  background: radial-gradient(circle at 20% 20%, #ffcedb, #c43e6b 80%);
+  font-family: 'Segoe UI', 'Roboto', system-ui, -apple-system, sans-serif;
+  padding:12px; color:white;
+  overflow-x:hidden;
 }
 
-/* CARD — frosty glass, no cut-off */
+/* ===== CARD — GLASSY LOVE ===== */
 .card {
-  max-width: 400px;
-  width: 100%;
-  margin: 0 auto;
-  padding: 24px 18px 28px;
-  border-radius: 36px;
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
-  text-align: center;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  max-width:440px; width:100%;
+  padding:32px 24px 36px;
+  border-radius:50px;
+  background: rgba(255,240,245,0.2);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  box-shadow: 0 40px 80px rgba(0,0,0,0.45), 0 0 0 1.5px rgba(255,255,255,0.2) inset;
+  text-align:center;
+  border:1px solid rgba(255,255,255,0.4);
+  position:relative;
+  animation: floatGlow 4s infinite alternate ease-in-out;
 }
 
-/* NAME — big & warm */
+/* Floating Glow */
+@keyframes floatGlow {
+  0% { box-shadow:0 35px 70px rgba(0,0,0,0.5),0 0 0 2px rgba(255,220,240,0.3) inset; transform:translateY(0); }
+  100% { box-shadow:0 50px 100px rgba(255,105,150,0.7),0 0 0 5px rgba(255,255,255,0.5) inset; transform:translateY(-8px); }
+}
+
+/* ===== NAME SPARKLE ===== */
 .name {
-  font-size: 32px;
-  font-weight: 800;
-  margin-bottom: 8px;
-  letter-spacing: -0.5px;
-  text-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  font-size:42px; font-weight:900;
+  margin-bottom:8px;
+  background: linear-gradient(135deg, #ffe6f0, #fff0f5);
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+  text-shadow: 0 0 25px #ffb6d9, 0 0 50px #ff99bb;
+  display:inline-block; position:relative;
+  letter-spacing:-0.3px;
+  animation: gentlePulse 3s infinite alternate;
+}
+.name::after {
+  content:"✨"; font-size:36px; position:absolute; top:-22px; right:-32px;
+  animation: twinkle 1.6s infinite; filter: drop-shadow(0 0 8px gold);
+}
+@keyframes twinkle {
+  0%,100%{opacity:0.7; transform:scale(1) rotate(0deg);}
+  50%{opacity:1; transform:scale(1.4) rotate(20deg);}
+}
+@keyframes gentlePulse {
+  0%{text-shadow:0 0 15px #ffd0e0,0 0 30px #ffb0c8;}
+  100%{text-shadow:0 0 30px #ffecf0,0 0 60px #ffc0d0;}
 }
 
-/* TYPING area */
+/* ===== TYPING MESSAGE ===== */
 #typing {
-  font-size: 16px;
-  line-height: 1.4;
-  min-height: 70px;
-  margin: 8px 0 6px;
-  padding: 0 5px;
-  font-weight: 400;
-  background: rgba(255,255,255,0.1);
-  border-radius: 30px;
-  padding: 12px 12px;
+  font-size:18px; line-height:1.6; min-height:90px;
+  margin:16px 0 14px; padding:18px 20px;
+  background: rgba(255,200,220,0.25);
+  border-radius:50px; font-weight:500;
+  box-shadow: 0 8px 22px rgba(255,255,255,0.2) inset;
+  backdrop-filter: blur(8px); border:1px solid rgba(255,255,255,0.5);
+  color:#fff9fc; text-shadow: 0 3px 6px rgba(0,0,0,0.25);
 }
 
-/* URDU — subtle elegance */
+/* ===== URDU MESSAGE ===== */
 .urdu {
-  font-size: 16px;
-  margin: 12px 0 16px;
-  background: rgba(255,215,230,0.25);
-  padding: 10px 12px;
-  border-radius: 40px;
-  font-weight: 400;
-  direction: rtl;
-  unicode-bidi: embed;
-  word-spacing: 2px;
+  font-size:19px; margin:18px 0 22px;
+  background: linear-gradient(125deg,#ffb0c3,#ff94b4);
+  padding:18px 22px; border-radius:65px;
+  font-weight:500; direction:rtl;
+  box-shadow:0 12px 28px #b32b4e; color:#fff;
+  text-shadow:0 2px 8px #b32b5e; letter-spacing:0.5px;
+  border:1px solid #ffe2f0; transform:scale(1.03);
+  transition:0.3s;
 }
+.urdu:hover { transform:scale(1.06); background:linear-gradient(125deg,#ffbdd0,#ffa0c0); }
 
-/* PERFECT PORTRAIT SLIDER — fixed ratio, no overflow */
+/* ===== SLIDESHOW ===== */
 .slideshow {
-  width: 100%;
-  aspect-ratio: 3 / 4;        /* classic portrait */
-  border-radius: 26px;
-  overflow: hidden;
-  margin: 14px 0 16px;
-  background: #ffcfd7;
-  position: relative;
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-  border: 3px solid rgba(255,255,240,0.6);
+  width:100%; aspect-ratio:3/4; border-radius:38px; overflow:hidden;
+  margin:18px 0 24px; background:#ffe2ed; position:relative;
+  box-shadow:0 32px 45px rgba(158,16,64,0.55),0 0 0 4px #fff4f9 inset;
+  border:2px solid white;
 }
-
 .slideshow img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;          /* covers area without stretching, may crop slightly but full bleed */
-  position: absolute;
-  top: 0;
-  left: 0;
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
-  pointer-events: none;
-  border-radius: 22px;        /* matches inner border */
+  width:100%; height:100%; object-fit:cover;
+  position:absolute; top:0; left:0; opacity:0;
+  transition:opacity 1.2s cubic-bezier(0.4,0,0.2,1);
+  border-radius:36px; filter: brightness(1.05) contrast(1.05);
+}
+.slideshow img.active { opacity:1; z-index:10; }
+
+/* ===== QUESTION ===== */
+.question {
+  font-size:23px; font-weight:700; margin:12px 0 20px;
+  background: rgba(255,255,255,0.2); padding:12px 18px;
+  border-radius:85px; display:inline-block;
+  backdrop-filter: blur(6px); color:#fff9fc;
+  text-shadow:0 4px 12px #c13162;
+  box-shadow:0 4px 18px rgba(255,255,255,0.35);
 }
 
-.slideshow img.active {
-  opacity: 1;
-  z-index: 2;
-}
-
-/* QUESTION */
-p {
-  margin: 14px 0 12px;
-  font-size: 18px;
-  font-weight: 500;
-}
-
-/* BUTTONS */
+/* ===== BUTTONS ===== */
 button {
-  padding: 12px 28px;
-  border: none;
-  border-radius: 40px;
-  margin: 6px 10px;
-  font-weight: 700;
-  font-size: 18px;
-  cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-  -webkit-tap-highlight-color: transparent;
-  border: 1px solid rgba(255,255,255,0.5);
+  padding:16px 38px; border:none; border-radius:65px;
+  margin:8px 10px; font-weight:800; font-size:21px; cursor:pointer;
+  transition:all 0.25s ease; letter-spacing:0.6px;
+  box-shadow:0 16px 28px rgba(0,0,0,0.3), 0 2px 0 #ffe6f0 inset;
+  -webkit-tap-highlight-color:transparent; border:1px solid rgba(255,255,255,0.85);
 }
-
-button:active {
-  transform: scale(0.96);
-}
-
 .yes {
-  background: white;
-  color: #d62b62;
-  padding-left: 35px;
-  padding-right: 35px;
+  background: radial-gradient(circle at 30% 10%, #fff, #ffe5f0);
+  color:#b32b62; text-shadow:0 1px 4px #ffa5c3; transform:scale(1.03);
 }
-
+.yes:hover { transform:scale(1.12) translateY(-4px); background:radial-gradient(circle at 30% 10%, #fff,#ffd5e6); box-shadow:0 28px 38px #7a1f40; }
 .no {
-  background: #ff4f81;
-  color: white;
-  position: relative;         /* changed by js to absolute, but base is relative */
-  display: inline-block;
-  transition: left 0.1s ease, top 0.1s ease;
+  background: radial-gradient(circle at 70% 20%, #ff7aa5,#d43f6b);
+  color:white; text-shadow:0 2px 5px #4f1329; position:relative; display:inline-block;
+  transition:left 0.15s ease, top 0.15s ease, transform 0.2s;
+  border:1px solid #ffe2f0;
 }
+.no:hover { filter:brightness(1.12); }
 
-/* RESULT area */
+/* ===== RESULT ===== */
 #result {
-  margin-top: 22px;
-  font-size: 22px;
-  font-weight: 800;
-  background: rgba(255, 140, 170, 0.5);
-  padding: 12px 5px;
-  border-radius: 60px;
-  letter-spacing: 0.5px;
+  margin-top:30px; font-size:28px; font-weight:900;
+  background: linear-gradient(145deg,#ffc1d0,#ff98b9);
+  padding:18px 10px; border-radius:65px; letter-spacing:0.9px;
+  box-shadow:0 12px 32px #a1355b; color:#fff9fb;
+  text-shadow:0 5px 14px #6b1a38; border:2px solid white;
+  transform:scale(1.03); backdrop-filter:blur(3px); transition:0.3s;
 }
+#result:not(:empty) { animation: pop 0.6s; }
+@keyframes pop { 0%{transform:scale(1);} 50%{transform:scale(1.15); background:#ffb0c8;} }
 
-/* tiny extra for mobile reach */
-@media (max-width: 380px) {
-  .card { padding: 18px 12px; }
-  .name { font-size: 28px; }
-  button { padding: 10px 18px; margin: 4px 5px; }
+/* ===== RESPONSIVE ===== */
+@media (max-width:400px){
+  .card{padding:24px 16px;}
+  .name{font-size:36px;}
+  .name::after{font-size:30px; top:-20px; right:-28px;}
+  .question{font-size:21px;}
+  button{padding:14px 26px;font-size:19px;margin:5px;}
 }
 </style>
 </head>
 <body>
 
 <div class="card">
+  <div class="name">Hira ❤️</div>
 
-<div class="name">Hira ❤️</div>
+  <p id="typing"></p>
 
-<p id="typing"></p>
+  <p class="urdu">تم میری زندگی کی سب سے خوبصورت کہانی ہو ❤️</p>
 
-<p class="urdu">تم میری زندگی کی سب سے خوبصورت کہانی ہو ❤️</p>
+  <!-- slideshow -->
+  <div class="slideshow">
+    <img src="07092025.jpeg" class="slide active" alt="Hira beautiful">
+    <img src="IMG-20250728-WA0002.jpg" class="slide" alt="Hira smile">
+    <img src="IMG-20250728-WA0023.jpg" class="slide" alt="Hira smile">
+    <img src="IMG-20250805-WA0006.jpg" class="slide" alt="Hira smile">
+    <img src="IMG-20250716-WA0005.jpg" class="slide" alt="Hira smile">
+  </div>
 
-<!-- slideshow with your local images (full bleed) -->
-<div class="slideshow">
-  <img src="07092025.jpeg" class="slide active" alt="Hira beautiful">
-  <img src="IMG-20250728-WA0002.jpg" class="slide" alt="Hira smile">
-  <img src="IMG-20250728-WA0023.jpg" class="slide" alt="Hira smile">
-  <img src="IMG-20250805-WA0006.jpg" class="slide" alt="Hira smile">
-  <img src="IMG-20250716-WA0005.jpg" class="slide" alt="Hira smile">
-</div>
+  <p class="question">Will you stay crazy in love with me forever? 🥰</p>
+  <button class="yes" id="yesBtn">YES ❤️</button>
+  <button class="no" id="noBtn">No 😜</button>
 
-<!-- Countdown section fully removed as requested -->
-
-<p>Will you stay crazy in love with me forever? 🥰</p>
-
-<button class="yes" id="yesBtn">YES ❤️</button>
-
-<button class="no" id="noBtn">No 😜</button>
-
-<p id="result"></p>
-
+  <p id="result"></p>
 </div>
 
 <script>
-(function() {
-  // ---- TYPING EFFECT ----
-  const text = "Every day with you feels magical. You are my peace, my happiness, my forever.";
-  let i = 0;
-  const typingElement = document.getElementById("typing");
-
-  function typing() {
-    if (i < text.length) {
-      typingElement.innerHTML += text.charAt(i);
-      i++;
-      setTimeout(typing, 45);
-    }
-  }
+(function(){
+  // Typing
+  const text="Every day with you feels magical. You are my peace, my happiness, my forever.";
+  let i=0;
+  const typingElement=document.getElementById("typing");
+  function typing(){ if(i<text.length){ typingElement.innerHTML+=text.charAt(i); i++; setTimeout(typing,40); } }
   typing();
 
-  // ---- SLIDER (portraits) ----
-  let slides = document.querySelectorAll(".slide");
-  let currentIndex = 0;
+  // Slider
+  let slides=document.querySelectorAll(".slide");
+  let currentIndex=0;
+  slides.forEach((img, idx)=>{ img.classList.toggle("active", idx===0); });
+  function slider(){ slides.forEach(img=>img.classList.remove("active")); currentIndex=(currentIndex+1)%slides.length; slides[currentIndex].classList.add("active"); setTimeout(slider,3800); }
+  setTimeout(slider,3800);
 
-  // ensure only first is active initially
-  slides.forEach((img, idx) => {
-    if (idx === 0) img.classList.add("active");
-    else img.classList.remove("active");
-  });
-
-  function slider() {
-    slides.forEach(img => img.classList.remove("active"));
-    currentIndex = (currentIndex + 1) % slides.length;
-    slides[currentIndex].classList.add("active");
-    setTimeout(slider, 3400); // smooth transition
+  // NO button runaway
+  const noBtn=document.getElementById("noBtn");
+  const yesBtn=document.getElementById("yesBtn");
+  const card=document.querySelector(".card");
+  card.style.position='relative';
+  function moveNoButton(){
+    const cardRect=card.getBoundingClientRect();
+    const btnRect=noBtn.getBoundingClientRect();
+    const padding=12;
+    const maxLeft=cardRect.width-btnRect.width-padding;
+    const maxTop=cardRect.height-btnRect.height-padding;
+    if(maxLeft<=0||maxTop<=0) return;
+    const randomLeft=Math.floor(Math.random()*maxLeft);
+    const randomTop=Math.floor(Math.random()*maxTop);
+    noBtn.style.position='absolute';
+    noBtn.style.left=randomLeft+'px';
+    noBtn.style.top=randomTop+'px';
+    noBtn.style.right='auto'; noBtn.style.bottom='auto';
+    noBtn.style.transition='left 0.2s ease, top 0.2s ease, transform 0.2s';
   }
+  noBtn.addEventListener('mouseover',e=>{e.preventDefault(); moveNoButton();});
+  noBtn.addEventListener('touchstart',e=>{e.preventDefault(); moveNoButton();},{passive:false});
+  noBtn.addEventListener('click',e=>{ e.preventDefault(); moveNoButton(); });
 
-  // start slider after a short delay
-  setTimeout(slider, 3400);
+  // YES celebration
+  function celebrate(){ const resultEl=document.getElementById("result"); resultEl.innerHTML="Yayyy! Forever with you 💍❤️✨"; resultEl.style.animation='none'; resultEl.offsetHeight; resultEl.style.animation='pop 0.6s'; }
+  yesBtn.addEventListener('click',celebrate);
 
-  // ---- NO BUTTON RUNAWAY (mobile & mouse friendly) ----
-  const noBtn = document.getElementById("noBtn");
-  const yesBtn = document.getElementById("yesBtn");
-  const card = document.querySelector(".card");
-  card.style.position = 'relative';   // make card relative for absolute positioning of noBtn
-
-  // Function to move button randomly inside card
-  function moveNoButton() {
-    if (!noBtn || !card) return;
-
-    const cardRect = card.getBoundingClientRect();
-    const btnRect = noBtn.getBoundingClientRect();
-
-    const padding = 8;
-    const maxLeft = cardRect.width - btnRect.width - padding;
-    const maxTop = cardRect.height - btnRect.height - padding;
-
-    if (maxLeft <= 0 || maxTop <= 0) return;
-
-    const randomLeft = Math.floor(Math.random() * maxLeft);
-    const randomTop = Math.floor(Math.random() * maxTop);
-
-    noBtn.style.position = 'absolute';
-    noBtn.style.left = randomLeft + 'px';
-    noBtn.style.top = randomTop + 'px';
-    noBtn.style.right = 'auto';
-    noBtn.style.bottom = 'auto';
-  }
-
-  // Event listeners for runaway
-  function handleMoveAway(e) {
-    e.preventDefault();
-    moveNoButton();
-  }
-
-  noBtn.addEventListener('mouseover', handleMoveAway);
-  noBtn.addEventListener('touchstart', handleMoveAway, { passive: false });
-  noBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    moveNoButton();
-  });
-
-  // Adjust on resize if button is absolute
-  window.addEventListener('resize', () => {
-    if (noBtn.style.position === 'absolute') {
-      const cardRect = card.getBoundingClientRect();
-      const btnRect = noBtn.getBoundingClientRect();
-      if (cardRect.width > 0) {
-        // keep it inside: put near bottom right as a safe fallback
-        noBtn.style.left = (cardRect.width - btnRect.width - 20) + 'px';
-        noBtn.style.top = (cardRect.height - btnRect.height - 50) + 'px';
-      }
-    }
-  });
-
-  // ---- YES BUTTON ACTION (fixed: celebrate is now defined) ----
-  function celebrate() {
-    const resultEl = document.getElementById("result");
-    resultEl.innerHTML = "Yayyy! Forever with you 💍❤️";
-  }
-
-  // Attach celebrate to yes button (inline onclick had scope issue)
-  yesBtn.addEventListener('click', celebrate);
-
-  // ---- IMAGE FALLBACK (if images missing, show soft color) ----
-  const imgs = document.querySelectorAll('.slideshow img');
-  imgs.forEach(img => {
-    img.addEventListener('error', function() {
-      this.style.backgroundColor = '#ffb6c1';
-      this.style.objectFit = 'cover'; 
-    });
-  });
+  // fallback for broken images
+  const imgs=document.querySelectorAll('.slideshow img');
+  imgs.forEach(img=>{ img.addEventListener('error',function(){ this.style.backgroundColor='#ffb6c1'; this.style.backgroundImage='radial-gradient(circle at 30% 30%, #ffc0cb,#ff99bb)'; this.style.objectFit='cover'; }); });
 
 })();
 </script>
-
-<!-- 
-  - countdown completely removed (no div, no js)
-  - celebrate function properly defined and attached to yes button
-  - all images remain full, slider works, no button runs away
--->
 </body>
 </html>
