@@ -1,1303 +1,1236 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Eid Mubarak</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Outfit:wght@300;500&display=swap" rel="stylesheet" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eid Mubarak — For You</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
     :root {
-      --ink: #1c1612;
-      --gold: #b8922e;
-      --gold-bright: #d4b84a;
-      --gold-dim: rgba(184, 146, 46, 0.35);
-      --cream-paper: #fffcf7;
-      --cream-warm: #f5efe6;
-      --rose: #8b4558;
-      --forest: #2d4a3e;
-      --edge: #e8dfd0;
-      /* Fallback until JS measures content; dvh avoids mobile URL bar clipping */
-      --card-h: min(88vh, 48rem);
-    }
-
-    @supports (height: 100dvh) {
-      :root {
-        --card-h: min(88dvh, 48rem);
-      }
+      --gold: #c9a227;
+      --gold-light: #e8d48b;
+      --cream: #faf6ef;
+      --deep: #1a1510;
+      --rose: #8b3a4a;
+      --rose-soft: #d4a5ae;
+      --emerald: #1e4d3a;
+      --shadow: rgba(26, 21, 16, 0.15);
     }
 
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
 
     html {
-      min-height: 100%;
-      overflow-x: hidden;
+      scroll-behavior: smooth;
     }
 
     body {
-      position: relative;
-      min-height: 100vh;
-      max-width: 100%;
+      font-family: 'Outfit', sans-serif;
+      background: var(--cream);
+      color: var(--deep);
       overflow-x: hidden;
-      font-family: "Outfit", system-ui, sans-serif;
-      font-weight: 300;
-      color: var(--ink);
-      line-height: 1.65;
-      background:
-        radial-gradient(ellipse 100% 80% at 50% 0%, rgba(45, 74, 62, 0.45), transparent 55%),
-        radial-gradient(ellipse 70% 50% at 100% 100%, rgba(139, 69, 88, 0.12), transparent),
-        linear-gradient(165deg, #1a2822 0%, #243530 40%, #1a2220 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: clamp(1rem, 4vw, 2.5rem);
+      -webkit-text-size-adjust: 100%;
     }
 
-    /* —— 3D paper-style flowers (CSS only) —— */
-    .flora-layer {
+    body.locked {
+      overflow: hidden;
+    }
+
+    /* ── Password gate ── */
+    .password-gate {
       position: fixed;
       inset: 0;
-      z-index: 0;
-      pointer-events: none;
-      overflow: hidden;
-      perspective: 900px;
-      perspective-origin: 50% 40%;
-    }
-
-    .flower-wrap {
-      position: absolute;
-      width: 5.5rem;
-      height: 5.5rem;
-      transform-style: preserve-3d;
-      opacity: 0.88;
-      filter: drop-shadow(0 12px 20px rgba(0, 0, 0, 0.22));
-    }
-
-    .flower-float {
-      width: 100%;
-      height: 100%;
-      transform-style: preserve-3d;
-    }
-
-    .flower-wrap--1 {
-      left: min(4%, 1.2rem);
-      bottom: 10%;
-      transform: scale(0.92);
-    }
-
-    .flower-wrap--1 .flower-float {
-      animation: floraFloat 9s ease-in-out infinite;
-    }
-
-    .flower-wrap--2 {
-      right: min(5%, 1.5rem);
-      top: 14%;
-      transform: scale(1.05);
-    }
-
-    .flower-wrap--2 .flower-float {
-      animation: floraFloat 11s ease-in-out infinite 1.2s;
-    }
-
-    .flower-wrap--3 {
-      left: 12%;
-      top: 18%;
-      transform: scale(0.62) rotate(8deg);
-      opacity: 0.72;
-    }
-
-    .flower-wrap--3 .flower-float {
-      animation: floraFloat 8.5s ease-in-out infinite 0.4s;
-    }
-
-    .flower-wrap--4 {
-      right: 10%;
-      bottom: 16%;
-      transform: scale(0.78) rotate(-6deg);
-      opacity: 0.8;
-    }
-
-    .flower-wrap--4 .flower-float {
-      animation: floraFloat 10s ease-in-out infinite 2s;
-    }
-
-    .flower-wrap--5 {
-      left: 50%;
-      bottom: 4%;
-      margin-left: -2.75rem;
-      transform: scale(0.55);
-      opacity: 0.55;
-    }
-
-    .flower-wrap--5 .flower-float {
-      animation: floraFloat 12s ease-in-out infinite 0.8s;
-    }
-
-    @media (max-width: 540px) {
-      .flora-layer {
-        opacity: 0.65;
-      }
-
-      .flower-wrap--5 {
-        display: none;
-      }
-    }
-
-    @keyframes floraFloat {
-      0%, 100% {
-        transform: translateY(0) rotateY(0deg);
-      }
-      50% {
-        transform: translateY(-10px) rotateY(18deg);
-      }
-    }
-
-    .flower-stage {
-      width: 100%;
-      height: 100%;
-      transform-style: preserve-3d;
-      animation: floraTurn 22s linear infinite;
-    }
-
-    .flower-wrap--2 .flower-stage,
-    .flower-wrap--4 .flower-stage {
-      animation-duration: 28s;
-      animation-direction: reverse;
-    }
-
-    @keyframes floraTurn {
-      from {
-        transform: rotateY(0deg);
-      }
-      to {
-        transform: rotateY(360deg);
-      }
-    }
-
-    .flower-bloom {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      width: 4rem;
-      height: 4rem;
-      margin: -2rem 0 0 -2rem;
-      transform-style: preserve-3d;
-      transform: rotateX(58deg) rotateZ(-12deg);
-    }
-
-    .flower-wrap--gold .flower-bloom {
-      transform: rotateX(52deg) rotateZ(20deg);
-    }
-
-    .flora-petal {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      width: 1.15rem;
-      height: 2.35rem;
-      margin: -2.05rem -0.575rem;
-      border-radius: 50% 50% 50% 50% / 68% 68% 32% 32%;
-      transform-origin: 50% 88%;
-      transform: rotateZ(var(--a, 0deg)) rotateX(46deg) translateZ(4px);
-      /* Cream / ivory only — rose tones stay on the card */
-      background: linear-gradient(
-        165deg,
-        #fffefb 0%,
-        #f0e8dc 42%,
-        #d4c9b8 100%
-      );
-      box-shadow:
-        inset 3px 2px 10px rgba(255, 255, 255, 0.55),
-        inset -4px -6px 12px rgba(45, 38, 28, 0.12);
-    }
-
-    .flower-wrap--gold .flora-petal {
-      background: linear-gradient(
-        165deg,
-        #f5e6bc 0%,
-        var(--gold-bright) 40%,
-        #8a6a1f 100%
-      );
-      box-shadow:
-        inset 2px 2px 8px rgba(255, 255, 255, 0.45),
-        inset -3px -5px 10px rgba(40, 30, 10, 0.2);
-    }
-
-    .flower-wrap--sage .flora-petal {
-      background: linear-gradient(
-        165deg,
-        rgba(200, 218, 204, 0.95) 0%,
-        rgba(90, 124, 108, 0.9) 55%,
-        rgba(35, 58, 48, 0.88) 100%
-      );
-      box-shadow:
-        inset 2px 2px 8px rgba(255, 255, 255, 0.25),
-        inset -3px -6px 10px rgba(15, 28, 22, 0.25);
-    }
-
-    .flora-core {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      width: 0.7rem;
-      height: 0.7rem;
-      margin: -0.35rem;
-      border-radius: 50%;
-      transform: translateZ(14px);
-      background: radial-gradient(circle at 32% 28%, #fff8e8, var(--gold) 55%, #6b5420);
-      box-shadow:
-        0 2px 6px rgba(0, 0, 0, 0.25),
-        inset 0 -1px 3px rgba(0, 0, 0, 0.2);
-    }
-
-    .flower-wrap--gold .flora-core {
-      background: radial-gradient(circle at 30% 30%, #fffef5, #c9a545 50%, #5c4a18);
-    }
-
-    .flower-wrap--sage .flora-core {
-      background: radial-gradient(circle at 32% 28%, #e8f0ea, #5a7c6c 55%, #243830);
-      box-shadow:
-        0 2px 6px rgba(0, 0, 0, 0.2),
-        inset 0 -1px 3px rgba(0, 0, 0, 0.15);
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .flower-float {
-        animation: none !important;
-      }
-
-      .flower-stage {
-        animation: none;
-      }
-    }
-
-    .mat {
-      /* Definite width so inner % widths don’t collapse (flex item shrink-to-fit + min(100%, …) cycle). */
-      width: min(24rem, 100%);
-      min-width: min(17.5rem, 100%);
-      max-width: 100%;
-      overflow-x: hidden;
-      padding: clamp(0.75rem, 2.5vw, 1.5rem);
-      border-radius: 0.35rem;
-      background: linear-gradient(145deg, rgba(255, 252, 247, 0.08), rgba(0, 0, 0, 0.15));
-      box-shadow:
-        0 1px 0 rgba(255, 255, 255, 0.06) inset,
-        0 32px 64px rgba(0, 0, 0, 0.35);
-      text-align: center;
-      animation: matIn 0.85s cubic-bezier(0.22, 1, 0.36, 1) both;
-      position: relative;
-      z-index: 1;
-    }
-
-    @keyframes matIn {
-      from {
-        opacity: 0;
-        transform: translateY(18px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .hint {
-      font-size: 0.78rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: rgba(255, 252, 247, 0.55);
-      margin-bottom: 1rem;
-      font-weight: 500;
-    }
-
-    .book-scene {
-      width: 100%;
-      max-width: 100%;
-      overflow: hidden;
-      perspective: 1600px;
-      perspective-origin: 35% 50%;
-    }
-
-    .book {
-      position: relative;
-      width: 100%;
-      height: var(--card-h);
-      margin: 0 auto;
-      transform-style: preserve-3d;
-      cursor: pointer;
-      outline: none;
-    }
-
-    .book:focus-visible {
-      box-shadow: 0 0 0 2px var(--cream-paper), 0 0 0 4px var(--gold);
-      border-radius: 6px;
-    }
-
-    .book-spine {
-      position: absolute;
-      left: 0;
-      top: 0;
-      bottom: 0;
-      width: 6px;
-      z-index: 0;
-      border-radius: 3px 0 0 3px;
-      background: linear-gradient(
-        90deg,
-        #2a2118 0%,
-        #4a3d2e 35%,
-        #5c4d3a 50%,
-        #4a3d2e 65%,
-        #2a2118 100%
-      );
-      box-shadow: 2px 0 6px rgba(0, 0, 0, 0.2);
-      pointer-events: none;
-    }
-
-    .book-page-inside {
-      position: absolute;
-      inset: 0;
-      z-index: 1;
-      border-radius: 3px;
-      overflow-y: auto;
-      overflow-x: hidden;
-      -webkit-overflow-scrolling: touch;
-      overscroll-behavior-y: contain;
-      text-align: center;
-      box-shadow: inset 8px 0 14px -8px rgba(28, 22, 18, 0.08);
-    }
-
-    /* Inside page: height from content (scroll when long). No min-height:100% — that left empty cream below text. */
-    .book-page-inside .eid-card {
-      height: auto;
-    }
-
-    .book-page-inside .frame {
-      min-height: 0;
-    }
-
-    .book-page-inside .frame-inside {
-      min-height: 0;
-    }
-
-    .book-page-inside .card-inside {
-      flex: 0 1 auto;
-    }
-
-    .book-page-inside::-webkit-scrollbar {
-      width: 6px;
-    }
-
-    .book-page-inside::-webkit-scrollbar-thumb {
-      background: rgba(28, 22, 18, 0.2);
-      border-radius: 3px;
-    }
-
-    .book-cover {
-      position: absolute;
-      inset: 0;
-      z-index: 2;
-      border-radius: 3px;
-      transform-origin: left center;
-      transform-style: preserve-3d;
-      transition: transform 2.6s cubic-bezier(0.33, 1, 0.32, 1);
-      overflow: hidden;
-      text-align: center;
-      backface-visibility: hidden;
-      -webkit-backface-visibility: hidden;
-    }
-
-    .book.is-open .book-cover {
-      transform: rotateY(-172deg);
-    }
-
-    .eid-card {
-      position: relative;
-      width: 100%;
-      min-width: 0;
-      height: 100%;
-      background:
-        linear-gradient(180deg, rgba(255, 255, 255, 0.5) 0%, transparent 40%),
-        var(--cream-paper);
-      background-size: 100% 100%, auto;
-      box-shadow:
-        0 1px 0 rgba(255, 255, 255, 0.95) inset,
-        0 2px 4px rgba(28, 22, 18, 0.06),
-        0 12px 28px rgba(0, 0, 0, 0.2),
-        0 0 0 1px rgba(28, 22, 18, 0.06);
-    }
-
-    .eid-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-      pointer-events: none;
-      mix-blend-mode: multiply;
-    }
-
-    .frame {
-      position: relative;
-      width: 100%;
-      min-width: 0;
-      margin: 0.85rem;
-      border: 1px solid var(--gold-dim);
-      outline: 1px solid rgba(184, 146, 46, 0.2);
-      outline-offset: 4px;
-      min-height: calc(100% - 1.7rem);
-      display: flex;
-      flex-direction: column;
-    }
-
-    .frame-inside {
-      margin: 0.65rem;
-      outline-offset: 3px;
-      min-height: calc(100% - 1.3rem);
-    }
-
-    .frame-cover {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 1.5rem 1.2rem;
-    }
-
-    .corner {
-      position: absolute;
-      width: 1.1rem;
-      height: 1.1rem;
-      border-color: var(--gold);
-      border-style: solid;
-      border-width: 0;
-      opacity: 0.75;
-      z-index: 1;
-    }
-
-    .corner-tl {
-      top: -1px;
-      left: -1px;
-      border-top-width: 2px;
-      border-left-width: 2px;
-    }
-
-    .corner-tr {
-      top: -1px;
-      right: -1px;
-      border-top-width: 2px;
-      border-right-width: 2px;
-    }
-
-    .corner-bl {
-      bottom: -1px;
-      left: -1px;
-      border-bottom-width: 2px;
-      border-left-width: 2px;
-    }
-
-    .corner-br {
-      bottom: -1px;
-      right: -1px;
-      border-bottom-width: 2px;
-      border-right-width: 2px;
-    }
-
-    .card-cover {
-      position: relative;
-      background: linear-gradient(180deg, var(--cream-warm) 0%, var(--cream-paper) 70%);
-    }
-
-    .moon-row {
+      z-index: 9999;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 0.35rem;
-      margin-bottom: 1rem;
-      color: var(--gold);
-      font-size: 0.65rem;
-      letter-spacing: 0.45em;
-      text-transform: uppercase;
-      font-weight: 500;
-    }
-
-    .moon-row span {
-      letter-spacing: 0;
-    }
-
-    .crescent {
-      width: 1.35rem;
-      height: 1.35rem;
-      border-radius: 50%;
-      box-shadow: inset 0.45rem -0.1rem 0 0 var(--gold-bright);
-      transform: rotate(-25deg);
-      opacity: 0.92;
-      flex-shrink: 0;
-    }
-
-    .recipient {
-      position: relative;
-      font-family: "Cormorant Garamond", serif;
-      font-size: clamp(1.35rem, 4.5vw, 1.65rem);
-      font-weight: 600;
-      font-style: italic;
-      color: var(--rose);
-      letter-spacing: 0.06em;
-      margin-bottom: 1rem;
-    }
-
-    .recipient::after {
-      content: "";
-      display: block;
-      width: 2.5rem;
-      height: 1px;
-      margin: 0.65rem auto 0;
-      background: linear-gradient(90deg, transparent, var(--gold), transparent);
-    }
-
-    .arabic {
-      font-family: "Cormorant Garamond", "Times New Roman", serif;
-      font-size: clamp(2.1rem, 7vw, 2.85rem);
-      font-weight: 600;
-      line-height: 1.25;
-      margin-bottom: 0.25rem;
-      background: linear-gradient(135deg, var(--gold-bright) 0%, var(--gold) 45%, #9a7220 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      filter: drop-shadow(0 1px 0 rgba(255, 255, 255, 0.9));
-    }
-
-    .sub-ar {
-      font-family: "Cormorant Garamond", serif;
-      font-size: 1.05rem;
-      font-style: italic;
-      color: var(--forest);
-      margin-bottom: 0.35rem;
-      opacity: 0.9;
-    }
-
-    .card-tagline {
-      font-size: 0.72rem;
-      font-weight: 500;
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
-      color: var(--gold);
-      opacity: 0.85;
-      margin-top: 0.5rem;
-    }
-
-    .open-hint {
-      margin-top: 1.35rem;
-      font-size: 0.72rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: rgba(28, 22, 18, 0.4);
-      font-weight: 500;
-    }
-
-    .card-inside {
-      position: relative;
-      width: 100%;
-      min-width: 0;
-      padding: 1rem 1rem 1.1rem;
-      text-align: center;
-      flex: 1;
-      line-height: 1.52;
-    }
-
-    .inside-rose {
-      display: flex;
-      justify-content: center;
-      margin: 0 0 0.65rem;
-      line-height: 0;
-    }
-
-    .inside-rose svg {
-      width: clamp(2.75rem, 11vw, 3.5rem);
-      height: auto;
-      filter: drop-shadow(0 3px 6px rgba(90, 30, 45, 0.18));
-    }
-
-    h1 {
-      font-family: "Cormorant Garamond", serif;
-      font-size: clamp(1.1rem, 3.4vw, 1.45rem);
-      font-weight: 600;
-      color: var(--ink);
-      margin-bottom: 0.55rem;
-      letter-spacing: 0.02em;
-      line-height: 1.28;
-      text-wrap: balance;
-      overflow-wrap: break-word;
-      word-break: normal;
-    }
-
-    .to {
-      font-size: 0.8rem;
-      color: var(--rose);
-      font-weight: 500;
-      margin-bottom: 0.65rem;
-      letter-spacing: 0.02em;
-    }
-
-    .card-inside p {
-      font-size: 0.875rem;
-      color: #3d3530;
-      margin-bottom: 0.65rem;
-      text-wrap: pretty;
-      overflow-wrap: break-word;
-      word-break: normal;
-      line-height: 1.52;
-    }
-
-    .from {
-      font-family: "Cormorant Garamond", serif;
-      font-size: 0.98rem;
-      font-weight: 600;
-      font-style: italic;
-      color: var(--gold);
-      margin: 0.75rem 0 0.65rem;
-      letter-spacing: 0.05em;
-    }
-
-    .sign-off {
-      margin-top: 0.65rem;
-      padding-top: 0.75rem;
-      border-top: 1px solid var(--gold-dim);
-      font-style: italic;
-      color: #5c534c;
-      font-size: 0.82rem;
-      margin-bottom: 0 !important;
-    }
-
-    .sparkle {
-      display: inline-block;
-      animation: twinkle 2.8s ease-in-out infinite;
-    }
-
-    .sparkle:nth-child(2) {
-      animation-delay: 0.35s;
-    }
-
-    .sparkle:nth-child(3) {
-      animation-delay: 0.7s;
-    }
-
-    @keyframes twinkle {
-      0%, 100% { opacity: 0.45; }
-      50% { opacity: 1; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .book-cover {
-        transition-duration: 0.7s;
-      }
-
-      .sparkle {
-        animation: none;
-        opacity: 0.85;
-      }
-
-      .mat {
-        animation: none;
-      }
-    }
-
-    @media print {
-      body {
-        background: white;
-        padding: 0;
-      }
-
-      .hint {
-        display: none;
-      }
-
-      .mat {
-        width: auto;
-        min-width: 0;
-        max-width: 5in;
-        padding: 0;
-        box-shadow: none;
-        background: none;
-        animation: none;
-      }
-
-      .book-scene {
-        perspective: none;
-      }
-
-      .book {
-        height: auto !important;
-        max-width: 5in;
-      }
-
-      .book-spine {
-        display: none;
-      }
-
-      .book-cover {
-        display: none !important;
-      }
-
-      .book-page-inside {
-        position: relative !important;
-        inset: auto !important;
-        overflow: visible !important;
-        box-shadow: none;
-      }
-
-      .eid-card {
-        box-shadow: none;
-        break-inside: avoid;
-      }
-
-      .sparkle {
-        animation: none;
-        opacity: 1;
-      }
-
-      .open-hint {
-        display: none;
-      }
-
-      .name-gate {
-        display: none !important;
-      }
-
-      .flora-layer {
-        display: none !important;
-      }
-    }
-
-    .name-gate {
-      position: fixed;
-      inset: 0;
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: clamp(1rem, 4vw, 2rem);
+      padding: 1.5rem;
+      padding-top: max(1.5rem, env(safe-area-inset-top));
+      padding-bottom: max(1.5rem, env(safe-area-inset-bottom));
       background:
-        radial-gradient(ellipse 100% 80% at 50% 0%, rgba(45, 74, 62, 0.55), transparent 55%),
-        radial-gradient(ellipse 70% 50% at 100% 100%, rgba(139, 69, 88, 0.15), transparent),
-        linear-gradient(165deg, #141f1a 0%, #1e2e28 45%, #141a18 100%);
-      animation: matIn 0.75s cubic-bezier(0.22, 1, 0.36, 1) both;
+        radial-gradient(ellipse at 30% 70%, rgba(201, 162, 39, 0.15) 0%, transparent 55%),
+        radial-gradient(ellipse at 70% 30%, rgba(139, 58, 74, 0.12) 0%, transparent 55%),
+        linear-gradient(160deg, #faf6ef 0%, #f0e8d8 100%);
+      transition: opacity 0.5s ease, visibility 0.5s ease;
     }
 
-    .name-gate.is-dismissed {
-      display: none;
+    .password-gate.hidden {
+      opacity: 0;
+      visibility: hidden;
       pointer-events: none;
     }
 
-    .name-gate-panel {
-      width: min(22rem, 100%);
-      padding: clamp(1.25rem, 4vw, 1.75rem);
-      border-radius: 0.35rem;
-      background: linear-gradient(145deg, rgba(255, 252, 247, 0.1), rgba(0, 0, 0, 0.2));
-      box-shadow:
-        0 1px 0 rgba(255, 255, 255, 0.08) inset,
-        0 24px 48px rgba(0, 0, 0, 0.4);
+    .password-card {
+      width: 100%;
+      max-width: 22rem;
+      background: white;
+      border-radius: 8px;
+      padding: 2.5rem 2rem;
+      box-shadow: 0 24px 60px var(--shadow);
+      border-top: 3px solid var(--gold);
       text-align: center;
     }
 
-    .name-gate-panel h2 {
-      font-family: "Cormorant Garamond", serif;
-      font-size: clamp(1.25rem, 4vw, 1.5rem);
-      font-weight: 600;
-      color: var(--cream-paper);
-      letter-spacing: 0.02em;
-      line-height: 1.3;
+    .password-card .lock-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .password-card h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.75rem;
+      color: var(--emerald);
       margin-bottom: 0.5rem;
     }
 
-    .name-gate-panel .gate-lead {
-      font-size: 0.82rem;
-      color: rgba(255, 252, 247, 0.65);
-      margin-bottom: 1.25rem;
+    .password-card p {
+      font-size: 0.9rem;
+      color: #6b6158;
+      margin-bottom: 1.5rem;
       line-height: 1.5;
     }
 
-    .name-gate-panel label {
-      display: block;
-      font-size: 0.68rem;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: rgba(255, 252, 247, 0.5);
-      font-weight: 500;
-      margin-bottom: 0.45rem;
-      text-align: left;
+    .password-form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
     }
 
-    .name-gate-panel input[type="text"] {
+    .password-input {
       width: 100%;
-      padding: 0.65rem 0.85rem;
-      font-family: "Outfit", system-ui, sans-serif;
-      font-size: 1rem;
-      font-weight: 400;
-      color: var(--ink);
-      background: var(--cream-paper);
-      border: 1px solid rgba(184, 146, 46, 0.35);
-      border-radius: 0.25rem;
-      margin-bottom: 1rem;
+      padding: 0.875rem 1rem;
+      font-family: 'Outfit', sans-serif;
+      font-size: 16px;
+      border: 1px solid #ddd5c8;
+      border-radius: 6px;
+      background: var(--cream);
+      color: var(--deep);
       outline: none;
-      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      -webkit-appearance: none;
     }
 
-    .name-gate-panel input[type="text"]:focus {
-      border-color: var(--gold-bright);
-      box-shadow: 0 0 0 2px rgba(212, 184, 74, 0.25);
+    .password-input:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(201, 162, 39, 0.15);
     }
 
-    .name-gate-panel button[type="submit"] {
+    .password-btn {
       width: 100%;
-      padding: 0.7rem 1rem;
-      font-family: "Outfit", system-ui, sans-serif;
-      font-size: 0.78rem;
+      padding: 0.875rem 1rem;
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.95rem;
       font-weight: 500;
-      letter-spacing: 0.2em;
+      letter-spacing: 0.05em;
       text-transform: uppercase;
-      color: var(--ink);
-      background: linear-gradient(135deg, var(--gold-bright), var(--gold));
+      color: white;
+      background: linear-gradient(135deg, var(--emerald) 0%, #2a6b4f 100%);
       border: none;
-      border-radius: 0.25rem;
+      border-radius: 6px;
       cursor: pointer;
-      transition: filter 0.2s ease, transform 0.15s ease;
+      min-height: 48px;
+      transition: transform 0.2s, box-shadow 0.2s;
+      -webkit-tap-highlight-color: transparent;
     }
 
-    .name-gate-panel button[type="submit"]:hover {
-      filter: brightness(1.05);
-    }
-
-    .name-gate-panel button[type="submit"]:active {
+    .password-btn:active {
       transform: scale(0.98);
     }
 
-    .gate-error {
-      margin-top: 0.85rem;
-      font-size: 0.8rem;
-      color: #e8a0a8;
-      min-height: 1.25em;
+    .password-error {
+      font-size: 0.85rem;
+      color: var(--rose);
+      min-height: 1.25rem;
+      opacity: 0;
+      transition: opacity 0.2s;
     }
 
-    .gate-error:empty {
-      margin-top: 0;
-      min-height: 0;
+    .password-error.show {
+      opacity: 1;
     }
 
-    .mat.is-gated {
+    .main-content {
       visibility: hidden;
+    }
+
+    .main-content.unlocked {
+      visibility: visible;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem 1.25rem;
+      padding-top: max(2rem, env(safe-area-inset-top));
+      padding-bottom: max(3.5rem, env(safe-area-inset-bottom));
+      position: relative;
+      background:
+        radial-gradient(ellipse at 20% 80%, rgba(201, 162, 39, 0.12) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 20%, rgba(139, 58, 74, 0.1) 0%, transparent 50%),
+        linear-gradient(160deg, #faf6ef 0%, #f0e8d8 50%, #e8ddd0 100%);
+    }
+
+    .hero::before {
+      content: '';
       position: absolute;
-      width: 0;
-      height: 0;
-      overflow: hidden;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c9a227' fill-opacity='0.06'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      opacity: 0.5;
       pointer-events: none;
     }
 
-    .mat.is-gated * {
-      pointer-events: none !important;
+    .crescent {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      animation: float 4s ease-in-out infinite;
     }
 
-    @keyframes gateShake {
-      0%, 100% { transform: translateX(0); }
-      20% { transform: translateX(-6px); }
-      40% { transform: translateX(6px); }
-      60% { transform: translateX(-4px); }
-      80% { transform: translateX(4px); }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
     }
 
-    .name-gate-panel.is-shake {
-      animation: gateShake 0.45s ease;
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.5rem, 8vw, 5rem);
+      font-weight: 600;
+      color: var(--emerald);
+      line-height: 1.1;
+      margin-bottom: 0.5rem;
+      opacity: 0;
+      animation: fadeUp 1s ease 0.3s forwards;
     }
 
-    @media (prefers-reduced-motion: reduce) {
-      .name-gate {
-        animation: none;
+    .hero .arabic {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      color: var(--gold);
+      direction: rtl;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 1s ease 0.5s forwards;
+    }
+
+    .hero .subtitle {
+      font-size: 1.1rem;
+      font-weight: 300;
+      color: var(--rose);
+      max-width: 32rem;
+      line-height: 1.7;
+      opacity: 0;
+      animation: fadeUp 1s ease 0.7s forwards;
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: max(2rem, env(safe-area-inset-bottom));
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: 0;
+      animation: fadeUp 1s ease 1.2s forwards, pulse 2s ease 2s infinite;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.5; }
+      50% { opacity: 1; }
+    }
+
+    /* ── Sections ── */
+    section {
+      padding: clamp(3rem, 8vw, 5rem) clamp(1rem, 4vw, 1.5rem);
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+    }
+
+    h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 600;
+      color: var(--emerald);
+      margin-bottom: 2rem;
+    }
+
+    /* ── Apology ── */
+    .apology {
+      background: white;
+      border-radius: 2px;
+      padding: 3rem 2.5rem;
+      box-shadow: 0 20px 60px var(--shadow);
+      border-top: 3px solid var(--rose-soft);
+      position: relative;
+    }
+
+    .apology::before {
+      content: '"';
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 8rem;
+      color: var(--rose-soft);
+      opacity: 0.3;
+      position: absolute;
+      top: -1rem;
+      left: 1.5rem;
+      line-height: 1;
+    }
+
+    .letter p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      line-height: 1.9;
+      color: #3d3530;
+      margin-bottom: 1.25rem;
+    }
+
+    .letter p:last-child {
+      margin-bottom: 0;
+    }
+
+    .signature {
+      margin-top: 2rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.4rem;
+      color: var(--rose);
+    }
+
+    /* ── Photo Album ── */
+    .gallery-section {
+      max-width: 640px;
+    }
+
+    .album {
+      perspective: 1200px;
+    }
+
+    .album-cover {
+      cursor: pointer;
+      max-width: 320px;
+      margin: 0 auto;
+      aspect-ratio: 4 / 5;
+      background: linear-gradient(145deg, #5c3d2e 0%, #3d2819 40%, #2a1a10 100%);
+      border-radius: 4px 12px 12px 4px;
+      box-shadow:
+        inset 4px 0 12px rgba(0, 0, 0, 0.3),
+        8px 12px 40px rgba(26, 21, 16, 0.35),
+        0 0 0 1px rgba(201, 162, 39, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .album-cover::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 8%;
+      bottom: 8%;
+      width: 14px;
+      background: linear-gradient(90deg, rgba(0,0,0,0.4), rgba(255,255,255,0.06));
+      border-radius: 2px 0 0 2px;
+    }
+
+    .album-cover::after {
+      content: '';
+      position: absolute;
+      inset: 12px;
+      border: 1px solid rgba(201, 162, 39, 0.35);
+      border-radius: 2px;
+      pointer-events: none;
+    }
+
+    @media (hover: hover) {
+      .album-cover:hover {
+        transform: translateY(-4px) rotateY(-4deg);
+        box-shadow:
+          inset 4px 0 12px rgba(0, 0, 0, 0.3),
+          12px 20px 50px rgba(26, 21, 16, 0.4);
+      }
+    }
+
+    .album-cover.opening {
+      transform: rotateY(-90deg);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .album-cover-inner {
+      text-align: center;
+      color: var(--gold-light);
+      padding: 2rem 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .album-cover-icon {
+      font-size: 2.5rem;
+      display: block;
+      margin-bottom: 1rem;
+    }
+
+    .album-cover-inner h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.75rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.02em;
+    }
+
+    .album-cover-inner p {
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      opacity: 0.75;
+    }
+
+    .album-book {
+      display: none;
+      animation: albumOpen 0.6s ease forwards;
+    }
+
+    .album-book.visible {
+      display: block;
+    }
+
+    @keyframes albumOpen {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .album-viewport {
+      background: linear-gradient(180deg, #f5efe6 0%, #ebe3d6 100%);
+      border-radius: 6px;
+      box-shadow:
+        inset 0 0 30px rgba(26, 21, 16, 0.06),
+        0 16px 48px var(--shadow);
+      border: 1px solid #ddd5c8;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .album-pages {
+      position: relative;
+      min-height: clamp(420px, 90vw, 560px);
+      overflow: hidden;
+      touch-action: manipulation;
+    }
+
+    .album-page {
+      position: absolute;
+      inset: 0;
+      padding: clamp(1rem, 4vw, 1.75rem);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transform: translateX(30px);
+      transition: opacity 0.45s ease, transform 0.45s ease;
+      pointer-events: none;
+    }
+
+    .album-page.active {
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: auto;
+      z-index: 2;
+    }
+
+    .album-page.leaving-left {
+      opacity: 0;
+      transform: translateX(-30px);
+      z-index: 1;
+    }
+
+    .album-page.leaving-right {
+      opacity: 0;
+      transform: translateX(30px);
+      z-index: 1;
+    }
+
+    .polaroid {
+      background: white;
+      padding: clamp(0.5rem, 2vw, 0.75rem) clamp(0.5rem, 2vw, 0.75rem) clamp(1.25rem, 4vw, 2rem);
+      box-shadow: 0 8px 24px rgba(26, 21, 16, 0.15);
+      transform: rotate(-1deg);
+      max-width: 100%;
+      width: min(100%, 320px);
+    }
+
+    .album-page:nth-child(even) .polaroid {
+      transform: rotate(1deg);
+    }
+
+    .polaroid img {
+      width: 100%;
+      height: auto;
+      max-height: clamp(300px, 62vw, 440px);
+      object-fit: contain;
+      object-position: center center;
+      display: block;
+      background: #fafafa;
+    }
+
+    .polaroid-caption {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+      color: #6b6158;
+      text-align: center;
+      margin-top: 0.75rem;
+    }
+
+    .album-controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      padding: 1.25rem 1rem;
+      background: rgba(255, 255, 255, 0.5);
+      border-top: 1px solid rgba(221, 213, 200, 0.8);
+    }
+
+    .album-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1px solid #ddd5c8;
+      background: white;
+      color: var(--emerald);
+      font-size: 1.25rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s, transform 0.2s;
+      -webkit-tap-highlight-color: transparent;
+      flex-shrink: 0;
+    }
+
+    .album-btn:active:not(:disabled) {
+      transform: scale(0.92);
+    }
+
+    .album-btn:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+    }
+
+    @media (hover: hover) {
+      .album-btn:hover:not(:disabled) {
+        background: var(--cream);
+      }
+    }
+
+    .album-page-info {
+      font-size: 0.85rem;
+      color: #6b6158;
+      min-width: 4.5rem;
+      text-align: center;
+    }
+
+    .album-page-info strong {
+      color: var(--emerald);
+      font-weight: 500;
+    }
+
+    .album-thumbs {
+      display: flex;
+      gap: 0.5rem;
+      padding: 1rem;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+
+    .album-thumbs::-webkit-scrollbar {
+      display: none;
+    }
+
+    .album-thumb {
+      flex: 0 0 56px;
+      width: 56px;
+      height: 56px;
+      border-radius: 4px;
+      overflow: hidden;
+      border: 2px solid transparent;
+      cursor: pointer;
+      scroll-snap-align: center;
+      opacity: 0.55;
+      transition: opacity 0.2s, border-color 0.2s, transform 0.2s;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .album-thumb.active {
+      opacity: 1;
+      border-color: var(--gold);
+      transform: scale(1.05);
+    }
+
+    .album-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .album-empty {
+      aspect-ratio: 4 / 5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      color: #8a7a6a;
+      gap: 0.75rem;
+    }
+
+    .album-empty span {
+      font-size: 3rem;
+      opacity: 0.4;
+    }
+
+    .album-swipe-hint {
+      text-align: center;
+      font-size: 0.75rem;
+      color: #8a7a6a;
+      margin-top: 0.75rem;
+      letter-spacing: 0.05em;
+    }
+
+    .gallery-note {
+      margin-top: 1.5rem;
+      font-size: 0.85rem;
+      color: #8a7a6a;
+      text-align: center;
+      font-weight: 300;
+    }
+
+    /* ── Countdown ── */
+    .countdown-section {
+      text-align: center;
+      padding-bottom: 6rem;
+    }
+
+    .countdown-wrap {
+      background: linear-gradient(135deg, var(--emerald) 0%, #2a6b4f 100%);
+      border-radius: 8px;
+      padding: clamp(2rem, 6vw, 3.5rem) clamp(1rem, 4vw, 2rem);
+      color: white;
+      box-shadow: 0 24px 60px rgba(30, 77, 58, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .countdown-wrap::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M20 20h20v20H20V20zm-20 0h20v20H0V20z'/%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    .countdown-wrap h2 {
+      color: var(--gold-light);
+      margin-bottom: 0.5rem;
+      position: relative;
+    }
+
+    .nikah-date {
+      font-size: 1rem;
+      font-weight: 300;
+      opacity: 0.85;
+      margin-bottom: 2.5rem;
+      position: relative;
+    }
+
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: clamp(0.75rem, 3vw, 2rem);
+      flex-wrap: wrap;
+      position: relative;
+    }
+
+    .countdown-unit {
+      min-width: 5.5rem;
+    }
+
+    .countdown-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.5rem, 8vw, 4rem);
+      font-weight: 600;
+      line-height: 1;
+      color: white;
+    }
+
+    .countdown-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      opacity: 0.7;
+      margin-top: 0.5rem;
+    }
+
+    .countdown-message {
+      margin-top: 2.5rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-style: italic;
+      color: var(--gold-light);
+      position: relative;
+    }
+
+    .countdown-arrived {
+      display: none;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
+      color: var(--gold-light);
+      position: relative;
+    }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      padding-bottom: max(2rem, env(safe-area-inset-bottom));
+      font-size: 0.8rem;
+      color: #8a7a6a;
+      border-top: 1px solid rgba(201, 162, 39, 0.2);
+    }
+
+    footer .heart {
+      color: var(--rose);
+    }
+
+    /* ── Reveal on scroll ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 768px) {
+      .hero .subtitle {
+        font-size: 1rem;
+        padding: 0 0.5rem;
       }
 
-      .name-gate-panel.is-shake {
-        animation: none;
+      .apology {
+        padding: 2rem 1.25rem;
+      }
+
+      .apology::before {
+        font-size: 5rem;
+        top: 0;
+        left: 0.75rem;
+      }
+
+      .letter p {
+        font-size: 1.1rem;
+        line-height: 1.75;
+      }
+
+      .signature {
+        font-size: 1.2rem;
+      }
+
+      h2 {
+        margin-bottom: 1.5rem;
+      }
+
+      .gallery-section {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+
+      .gallery-note {
+        font-size: 0.8rem;
+        padding: 0 0.5rem;
+      }
+
+      .countdown {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.25rem 0.5rem;
+        max-width: 16rem;
+        margin: 0 auto;
+      }
+
+      .countdown-unit {
+        min-width: unset;
+      }
+
+      .countdown-message {
+        font-size: 1.1rem;
+        padding: 0 0.5rem;
+      }
+
+      .nikah-date {
+        font-size: 0.9rem;
+        padding: 0 0.5rem;
+      }
+
+      .password-card {
+        padding: 2rem 1.5rem;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .crescent {
+        font-size: 2.25rem;
+      }
+
+      .countdown-number {
+        font-size: 2.25rem;
+      }
+
+      .countdown-label {
+        font-size: 0.55rem;
       }
     }
   </style>
 </head>
-<body>
-  <div class="flora-layer" aria-hidden="true">
-    <div class="flower-wrap flower-wrap--1 flower-wrap--sage">
-      <div class="flower-float">
-        <div class="flower-stage">
-          <div class="flower-bloom">
-            <span class="flora-petal" style="--a: 0deg"></span>
-            <span class="flora-petal" style="--a: 72deg"></span>
-            <span class="flora-petal" style="--a: 144deg"></span>
-            <span class="flora-petal" style="--a: 216deg"></span>
-            <span class="flora-petal" style="--a: 288deg"></span>
-            <span class="flora-core"></span>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="flower-wrap flower-wrap--2 flower-wrap--gold">
-      <div class="flower-float">
-        <div class="flower-stage">
-          <div class="flower-bloom">
-            <span class="flora-petal" style="--a: 0deg"></span>
-            <span class="flora-petal" style="--a: 60deg"></span>
-            <span class="flora-petal" style="--a: 120deg"></span>
-            <span class="flora-petal" style="--a: 180deg"></span>
-            <span class="flora-petal" style="--a: 240deg"></span>
-            <span class="flora-petal" style="--a: 300deg"></span>
-            <span class="flora-core"></span>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="flower-wrap flower-wrap--3">
-      <div class="flower-float">
-        <div class="flower-stage">
-          <div class="flower-bloom">
-            <span class="flora-petal" style="--a: 0deg"></span>
-            <span class="flora-petal" style="--a: 72deg"></span>
-            <span class="flora-petal" style="--a: 144deg"></span>
-            <span class="flora-petal" style="--a: 216deg"></span>
-            <span class="flora-petal" style="--a: 288deg"></span>
-            <span class="flora-core"></span>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="flower-wrap flower-wrap--4 flower-wrap--sage">
-      <div class="flower-float">
-        <div class="flower-stage">
-          <div class="flower-bloom">
-            <span class="flora-petal" style="--a: 0deg"></span>
-            <span class="flora-petal" style="--a: 60deg"></span>
-            <span class="flora-petal" style="--a: 120deg"></span>
-            <span class="flora-petal" style="--a: 180deg"></span>
-            <span class="flora-petal" style="--a: 240deg"></span>
-            <span class="flora-petal" style="--a: 300deg"></span>
-            <span class="flora-core"></span>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="flower-wrap flower-wrap--5 flower-wrap--gold">
-      <div class="flower-float">
-        <div class="flower-stage">
-          <div class="flower-bloom">
-            <span class="flora-petal" style="--a: 0deg"></span>
-            <span class="flora-petal" style="--a: 72deg"></span>
-            <span class="flora-petal" style="--a: 144deg"></span>
-            <span class="flora-petal" style="--a: 216deg"></span>
-            <span class="flora-petal" style="--a: 288deg"></span>
-            <span class="flora-core"></span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+<body class="locked">
 
-  <div class="name-gate" id="name-gate" role="dialog" aria-modal="true" aria-labelledby="gate-title">
-    <div class="name-gate-panel" id="name-gate-panel">
-      <h2 id="gate-title">This is just for you</h2>
-      <p class="gate-lead">Enter the name you call your love with your heart, not his original name, and the card will open.</p>
-      <form id="gate-form" novalidate>
-        <label for="gate-name">Your special name for him</label>
+  <!-- Password gate -->
+  <div class="password-gate" id="password-gate">
+    <div class="password-card">
+      <div class="lock-icon">🔒</div>
+      <h2>For Your Eyes Only</h2>
+      <p>Enter the password to open your special Eid message.</p>
+      <form class="password-form" id="password-form">
         <input
-          id="gate-name"
-          name="name"
-          type="text"
-          autocomplete="off"
-          spellcheck="false"
-          autocapitalize="words"
+          type="password"
+          class="password-input"
+          id="password-input"
+          placeholder="Enter password"
+          autocomplete="current-password"
           required
-          maxlength="80"
-        />
-        <button type="submit">Continue</button>
-        <p class="gate-error" id="gate-error" role="alert" aria-live="polite"></p>
+        >
+        <p class="password-error" id="password-error">Incorrect password. Try again.</p>
+        <button type="submit" class="password-btn">Unlock</button>
       </form>
     </div>
   </div>
 
-  <div class="mat is-gated" id="main-mat">
-    <p class="hint" id="hint" aria-live="polite">Tap to open the book</p>
-    <div class="book-scene">
-      <div
-        class="book"
-        id="book"
-        tabindex="0"
-        role="button"
-        aria-label="Open book. Tap or press Enter to read inside."
-        aria-pressed="false"
-      >
-        <span class="book-spine" aria-hidden="true"></span>
+  <div class="main-content" id="main-content">
 
-        <div class="book-page-inside">
-          <div class="eid-card">
-            <div class="frame frame-inside">
-              <span class="corner corner-tl" aria-hidden="true"></span>
-              <span class="corner corner-tr" aria-hidden="true"></span>
-              <span class="corner corner-bl" aria-hidden="true"></span>
-              <span class="corner corner-br" aria-hidden="true"></span>
+  <!-- Hero -->
+  <header class="hero">
+    <div class="crescent">🌙</div>
+    <h1>Eid Ul Adha Mubarak</h1>
+    <p class="arabic">عيد الأضحى مبارك</p>
+    <p class="subtitle">
+      To the most beautiful soul in my life — may this blessed Eid bring you peace,
+      joy, and countless blessings. You mean everything to me.
+    </p>
+    <span class="scroll-hint">Scroll down ↓</span>
+  </header>
 
-              <div class="card-inside">
-                <div class="inside-rose" aria-hidden="true">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 84" width="56" height="65">
-                    <defs>
-                      <linearGradient id="insideRosePetal" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stop-color="#f0b4c0" />
-                        <stop offset="40%" stop-color="#c75b6e" />
-                        <stop offset="100%" stop-color="#7a2840" />
-                      </linearGradient>
-                      <linearGradient id="insideRoseLeaf" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stop-color="#5a9078" />
-                        <stop offset="100%" stop-color="#2d4a3e" />
-                      </linearGradient>
-                    </defs>
-                    <path
-                      d="M36 54 Q33 68 37 82"
-                      fill="none"
-                      stroke="#2d4a3e"
-                      stroke-width="2.4"
-                      stroke-linecap="round"
-                    />
-                    <path
-                      d="M37 60 Q52 54 58 62 Q46 58 38 66"
-                      fill="url(#insideRoseLeaf)"
-                      opacity="0.92"
-                    />
-                    <path
-                      d="M35 66 Q20 60 12 66 Q24 64 34 70"
-                      fill="url(#insideRoseLeaf)"
-                      opacity="0.82"
-                    />
-                    <ellipse
-                      cx="36"
-                      cy="40"
-                      rx="19"
-                      ry="15"
-                      fill="url(#insideRosePetal)"
-                      transform="rotate(-28 36 40)"
-                      opacity="0.96"
-                    />
-                    <ellipse
-                      cx="36"
-                      cy="40"
-                      rx="19"
-                      ry="15"
-                      fill="url(#insideRosePetal)"
-                      transform="rotate(28 36 40)"
-                      opacity="0.96"
-                    />
-                    <ellipse
-                      cx="36"
-                      cy="40"
-                      rx="17"
-                      ry="13"
-                      fill="url(#insideRosePetal)"
-                      transform="rotate(82 36 40)"
-                      opacity="0.9"
-                    />
-                    <ellipse
-                      cx="36"
-                      cy="40"
-                      rx="17"
-                      ry="13"
-                      fill="url(#insideRosePetal)"
-                      transform="rotate(-82 36 40)"
-                      opacity="0.9"
-                    />
-                    <ellipse cx="36" cy="38" rx="11" ry="10" fill="#a33d54" />
-                    <circle cx="36" cy="36" r="5.5" fill="#5c1f32" />
-                  </svg>
-                </div>
-                <h1>On this blessed day, my heart is with yours</h1>
-                <p class="to">For you—who grace every ordinary day</p>
-                <p>
-                  May this Eid settle gently into your life: peace where you need stillness, joy
-                  where you have given so much, and every happiness written for you in ways only
-                  He knows best. I am quietly, deeply grateful to stand beside you—not only today,
-                  but on the path we are walking toward together.
-                </p>
-                <p class="from">— Hamza Zahid</p>
-                <p>
-                  Taqabbal Allahu minna wa minkum — may Allah accept from us and from you our
-                  worship, our striving, and the love we hold in trust for one another.
-                </p>
-                <p class="sign-off">Yours, with love — today, and in all the days that follow</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="book-cover">
-          <div class="eid-card card-cover">
-            <div class="frame frame-cover">
-              <span class="corner corner-tl" aria-hidden="true"></span>
-              <span class="corner corner-tr" aria-hidden="true"></span>
-              <span class="corner corner-bl" aria-hidden="true"></span>
-              <span class="corner corner-br" aria-hidden="true"></span>
-
-              <div class="moon-row" aria-hidden="true">
-                <span class="sparkle">✦</span>
-                <span class="crescent"></span>
-                <span class="sparkle">✦</span>
-              </div>
-              <!-- Replace Her Name and Hamza Zahid on the inside -->
-              <p class="recipient">Hira</p>
-              <p class="arabic" dir="rtl">عيد مبارك</p>
-              <p class="sub-ar">Eid Mubarak</p>
-              <p class="card-tagline">Blessed celebration</p>
-              <p class="open-hint" aria-hidden="true">Open book</p>
-            </div>
-          </div>
-        </div>
+  <!-- Apology -->
+  <section class="reveal">
+    <p class="section-label">From my heart</p>
+    <h2>I'm Sorry</h2>
+    <div class="apology">
+      <div class="letter">
+        <p>
+          My love, I want to start this Eid by saying something I should have said sooner —
+          I am truly sorry. If I ever hurt you, disappointed you, or made you feel anything
+          less than cherished, please forgive me.
+        </p>
+        <p>
+          You deserve the world and so much more. Every day with you is a gift, and I never
+          want to take that for granted. I promise to be better — more patient, more understanding,
+          and always here for you.
+        </p>
+        <p>
+          On this sacred day of sacrifice and gratitude, I am grateful above all for <em>you</em>.
+          May Allah accept our duas, bless our union, and guide us on the path He has written for us.
+        </p>
+        <p class="signature">With all my love, always ♥</p>
       </div>
     </div>
-  </div>
+  </section>
+
+  <!-- Photo Album -->
+  <section class="gallery-section reveal">
+    <p class="section-label">My favorite person</p>
+    <h2>Our Album</h2>
+    <div class="album" id="album">
+      <div class="album-cover" id="album-cover">
+        <div class="album-cover-inner">
+          <span class="album-cover-icon">📖</span>
+          <h3>Our Memories</h3>
+          <p>Tap to open</p>
+        </div>
+      </div>
+      <div class="album-book" id="album-book">
+        <div class="album-viewport">
+          <div class="album-pages" id="album-pages"></div>
+          <div class="album-controls">
+            <button class="album-btn" id="album-prev" aria-label="Previous photo">‹</button>
+            <span class="album-page-info"><strong id="album-current">1</strong> / <span id="album-total">1</span></span>
+            <button class="album-btn" id="album-next" aria-label="Next photo">›</button>
+          </div>
+        </div>
+        <div class="album-thumbs" id="album-thumbs"></div>
+        <p class="album-swipe-hint" id="album-swipe-hint">Swipe left or right to flip pages</p>
+      </div>
+    </div>
+    <p class="gallery-note" id="gallery-note" hidden>Add photos to the <strong>images</strong> folder</p>
+  </section>
+
+  <!-- Nikah Countdown -->
+  <section class="countdown-section reveal">
+    <div class="countdown-wrap">
+      <h2>Our Nikah</h2>
+      <p class="nikah-date">Tuesday, June 2, 2026 · Insha'Allah</p>
+
+      <div class="countdown" id="countdown">
+        <div class="countdown-unit">
+          <div class="countdown-number" id="days">--</div>
+          <div class="countdown-label">Days</div>
+        </div>
+        <div class="countdown-unit">
+          <div class="countdown-number" id="hours">--</div>
+          <div class="countdown-label">Hours</div>
+        </div>
+        <div class="countdown-unit">
+          <div class="countdown-number" id="minutes">--</div>
+          <div class="countdown-label">Minutes</div>
+        </div>
+        <div class="countdown-unit">
+          <div class="countdown-number" id="seconds">--</div>
+          <div class="countdown-label">Seconds</div>
+        </div>
+      </div>
+
+      <p class="countdown-message" id="countdown-msg">
+        Until we begin our forever, Insha'Allah
+      </p>
+      <p class="countdown-arrived" id="countdown-arrived">
+        Today is the day — Alhamdulillah ♥
+      </p>
+    </div>
+  </section>
+
+  <footer>
+    Made with <span class="heart">♥</span> for you · Eid Mubarak 2026
+  </footer>
+
+  </div><!-- /.main-content -->
 
   <script>
-    (function () {
-      /** She types *your* name here (love’s name); not case-sensitive; spaces trimmed. */
-      var EXPECTED_NAME = "Hamzye";
+    // ── Password protection ──
+    // To change password: hash with SHA-256 and replace PASSWORD_HASH below
+    const PASSWORD_HASH = 'b990c2a8d8aa4560b7883723a2edebcc53ed91233d30b84766978c9d83443bc7';
+    const AUTH_KEY = 'eid2026_authenticated';
 
-      var STORAGE_KEY = "eidMubarakNameOk";
+    const passwordGate = document.getElementById('password-gate');
+    const mainContent = document.getElementById('main-content');
+    const passwordForm = document.getElementById('password-form');
+    const passwordInput = document.getElementById('password-input');
+    const passwordError = document.getElementById('password-error');
 
-      var gate = document.getElementById("name-gate");
-      var gateForm = document.getElementById("gate-form");
-      var gateName = document.getElementById("gate-name");
-      var gateError = document.getElementById("gate-error");
-      var gatePanel = document.getElementById("name-gate-panel");
-      var mat = document.getElementById("main-mat");
-      var book = document.getElementById("book");
-      var hint = document.getElementById("hint");
-      if (!book || !hint || !mat) return;
+    async function hashPassword(password) {
+      const data = new TextEncoder().encode(password);
+      const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+      return Array.from(new Uint8Array(hashBuffer))
+        .map((b) => b.toString(16).padStart(2, '0'))
+        .join('');
+    }
 
-      var cover = book.querySelector(".book-cover");
-      var inside = book.querySelector(".book-page-inside");
-      var resizeTimer;
+    function unlockPage() {
+      sessionStorage.setItem(AUTH_KEY, 'true');
+      passwordGate.classList.add('hidden');
+      mainContent.classList.add('unlocked');
+      document.body.classList.remove('locked');
+    }
 
-      function normalizeName(s) {
-        return String(s || "")
-          .trim()
-          .replace(/\s+/g, " ")
-          .toLowerCase();
-      }
+    if (sessionStorage.getItem(AUTH_KEY) === 'true') {
+      unlockPage();
+    }
 
-      function unlockApp() {
-        try {
-          sessionStorage.setItem(STORAGE_KEY, "1");
-        } catch (e) {}
-        if (gate) {
-          gate.classList.add("is-dismissed");
-          gate.setAttribute("aria-hidden", "true");
-        }
-        mat.classList.remove("is-gated");
-        if (gateError) gateError.textContent = "";
-      }
+    passwordForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      passwordError.classList.remove('show');
 
-      function showGateError(msg) {
-        if (gateError) gateError.textContent = msg;
-        if (gatePanel) {
-          gatePanel.classList.remove("is-shake");
-          void gatePanel.offsetWidth;
-          gatePanel.classList.add("is-shake");
-        }
-      }
-
-      function viewportH() {
-        return window.visualViewport ? window.visualViewport.height : window.innerHeight;
-      }
-
-      function syncCardHeight() {
-        if (!cover || !inside || mat.classList.contains("is-gated")) return;
-        var maxCap = Math.min(viewportH() * 0.9, 52 * 16);
-        var minPx = Math.min(320, viewportH() * 0.45);
-        book.style.height = maxCap + "px";
-        void book.offsetHeight;
-        var need = Math.max(cover.scrollHeight, inside.scrollHeight);
-        var h = Math.max(minPx, Math.min(maxCap, need));
-        book.style.height = h + "px";
-      }
-
-      function setOpen(on) {
-        book.classList.toggle("is-open", on);
-        book.setAttribute("aria-pressed", on ? "true" : "false");
-        book.setAttribute(
-          "aria-label",
-          on
-            ? "Book is open. Tap or press Enter to close the cover."
-            : "Open book. Tap or press Enter to read inside."
-        );
-        hint.textContent = on ? "Tap to close the book" : "Tap to open the book";
-      }
-
-      book.addEventListener("click", function () {
-        setOpen(!book.classList.contains("is-open"));
-      });
-
-      book.addEventListener("keydown", function (e) {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          setOpen(!book.classList.contains("is-open"));
-        }
-      });
-
-      function scheduleSync() {
-        clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(syncCardHeight, 80);
-      }
-
-      window.addEventListener("resize", scheduleSync);
-      if (window.visualViewport) {
-        window.visualViewport.addEventListener("resize", scheduleSync);
-      }
-
-      function afterUnlockLayout() {
-        if (document.fonts && document.fonts.ready) {
-          document.fonts.ready.then(function () {
-            syncCardHeight();
-            requestAnimationFrame(syncCardHeight);
-          });
-        } else {
-          syncCardHeight();
-          requestAnimationFrame(syncCardHeight);
-        }
-      }
-
-      var alreadyOk = false;
-      try {
-        alreadyOk = sessionStorage.getItem(STORAGE_KEY) === "1";
-      } catch (e) {}
-
-      if (alreadyOk) {
-        unlockApp();
-        afterUnlockLayout();
-      } else if (gateForm && gateName && gate) {
-        gateForm.addEventListener("submit", function (e) {
-          e.preventDefault();
-          var typed = normalizeName(gateName.value);
-          if (!typed) {
-            showGateError("Please enter the name of your love.");
-            return;
-          }
-          if (typed === normalizeName(EXPECTED_NAME)) {
-            unlockApp();
-            afterUnlockLayout();
-          } else {
-            showGateError("That name doesn’t unlock this card—only one heart wrote it.");
-          }
-        });
-        requestAnimationFrame(function () {
-          gateName.focus();
-        });
+      const hash = await hashPassword(passwordInput.value);
+      if (hash === PASSWORD_HASH) {
+        unlockPage();
+        passwordInput.value = '';
       } else {
-        unlockApp();
-        afterUnlockLayout();
+        passwordError.classList.add('show');
+        passwordInput.value = '';
+        passwordInput.focus();
       }
-    })();
+    });
+
+    // ── Photo album ──
+    // Add new filenames here when you add more photos to the images folder
+    const albumCaptions = [
+      'Every moment with you ♥',
+      'My favorite smile',
+      'Beautiful inside & out',
+      'Forever grateful for you',
+      'My heart belongs to you',
+      'Until our nikah, Insha\'Allah',
+      'You light up my world',
+      'My beautiful fiancée',
+      'Always in my thoughts',
+      'Can\'t wait for forever with you',
+      'You mean everything to me',
+      'My blessing from Allah',
+      'Love you more each day',
+      'Our story, our memories',
+      'Perfect in every way',
+      'Forever yours ♥'
+    ];
+
+    const photoFiles = [
+      'WhatsApp Image 2026-05-27 at 8.52.24 AM (1).jpeg',
+      '1000109785.jpg',
+      'WhatsApp Image 2026-05-27 at 8.52.23 AM.jpeg',
+      '1000109809.jpg',
+      '1000109776.jpg',
+      'WhatsApp Image 2026-05-27 at 8.52.25 AM.jpeg',
+      '1000109837.jpg',
+      'WhatsApp Image 2026-05-27 at 8.52.24 AM.jpeg',
+      '1000109812.jpg',
+      'WhatsApp Image 2026-05-27 at 8.52.27 AM (1).jpeg',
+      '1000109788.jpg',
+      '1000109777.jpg',
+      'WhatsApp Image 2026-05-27 at 8.52.24 AM (2).jpeg',
+      '1000109840.jpg',
+      '1000109800.jpg',
+      '1000109824.jpg'
+    ];
+
+    const photoAlbum = photoFiles.map((file, i) => ({
+      src: 'images/' + file,
+      caption: albumCaptions[i % albumCaptions.length]
+    }));
+
+    const albumCover = document.getElementById('album-cover');
+    const albumBook = document.getElementById('album-book');
+    const albumPages = document.getElementById('album-pages');
+    const albumThumbs = document.getElementById('album-thumbs');
+    const albumPrev = document.getElementById('album-prev');
+    const albumNext = document.getElementById('album-next');
+    const albumCurrent = document.getElementById('album-current');
+    const albumTotal = document.getElementById('album-total');
+
+    let loadedPhotos = [];
+    let currentPage = 0;
+    let touchStartX = 0;
+
+    function photoUrl(src) {
+      return encodeURI(src);
+    }
+
+    function loadPhotos() {
+      return Promise.all(
+        photoAlbum.map(
+          (photo) =>
+            new Promise((resolve) => {
+              const img = new Image();
+              img.onload = () => resolve(photo);
+              img.onerror = () => resolve(null);
+              img.src = photoUrl(photo.src);
+            })
+        )
+      ).then((results) => results.filter(Boolean));
+    }
+
+    function buildAlbum(photos) {
+      loadedPhotos = photos;
+      albumPages.innerHTML = '';
+      albumThumbs.innerHTML = '';
+
+      const galleryNote = document.getElementById('gallery-note');
+      if (photos.length > 0) {
+        galleryNote.hidden = true;
+      } else {
+        galleryNote.hidden = false;
+      }
+
+      if (photos.length === 0) {
+        albumCover.style.display = 'none';
+        albumBook.classList.add('visible');
+        albumPages.innerHTML =
+          '<div class="album-empty"><span>📷</span><p>No photos yet.<br>Add photo1.jpg, photo2.jpg … to the images folder.</p></div>';
+        document.getElementById('album-swipe-hint').style.display = 'none';
+        albumThumbs.style.display = 'none';
+        document.querySelector('.album-controls').style.display = 'none';
+        return;
+      }
+
+      albumTotal.textContent = photos.length;
+
+      photos.forEach((photo, i) => {
+        const page = document.createElement('div');
+        page.className = 'album-page' + (i === 0 ? ' active' : '');
+        page.innerHTML = `
+          <div class="polaroid">
+            <img src="${photoUrl(photo.src)}" alt="Memory ${i + 1}" loading="lazy">
+            <p class="polaroid-caption">${photo.caption}</p>
+          </div>
+        `;
+        albumPages.appendChild(page);
+
+        const thumb = document.createElement('button');
+        thumb.type = 'button';
+        thumb.className = 'album-thumb' + (i === 0 ? ' active' : '');
+        thumb.setAttribute('aria-label', `Go to photo ${i + 1}`);
+        thumb.innerHTML = `<img src="${photoUrl(photo.src)}" alt="">`;
+        thumb.addEventListener('click', () => goToPage(i));
+        albumThumbs.appendChild(thumb);
+      });
+
+      updateControls();
+    }
+
+    function goToPage(index, direction) {
+      if (index < 0 || index >= loadedPhotos.length || index === currentPage) return;
+
+      const pages = albumPages.querySelectorAll('.album-page');
+      const thumbs = albumThumbs.querySelectorAll('.album-thumb');
+      const prev = currentPage;
+
+      pages[prev].classList.remove('active');
+      pages[prev].classList.add(direction === 'next' ? 'leaving-left' : 'leaving-right');
+
+      setTimeout(() => {
+        pages[prev].classList.remove('leaving-left', 'leaving-right');
+      }, 450);
+
+      pages[index].classList.add('active');
+      thumbs[prev].classList.remove('active');
+      thumbs[index].classList.add('active');
+
+      currentPage = index;
+      albumCurrent.textContent = index + 1;
+      updateControls();
+      thumbs[index].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+    }
+
+    function updateControls() {
+      albumPrev.disabled = currentPage === 0;
+      albumNext.disabled = currentPage === loadedPhotos.length - 1;
+    }
+
+    function openAlbum() {
+      albumCover.classList.add('opening');
+      setTimeout(() => {
+        albumCover.style.display = 'none';
+        albumBook.classList.add('visible');
+      }, 400);
+    }
+
+    albumCover.addEventListener('click', openAlbum);
+
+    albumPrev.addEventListener('click', () => goToPage(currentPage - 1, 'prev'));
+    albumNext.addEventListener('click', () => goToPage(currentPage + 1, 'next'));
+
+    albumPages.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    albumPages.addEventListener('touchend', (e) => {
+      const diff = touchStartX - e.changedTouches[0].screenX;
+      if (Math.abs(diff) < 50) return;
+      if (diff > 0) goToPage(currentPage + 1, 'next');
+      else goToPage(currentPage - 1, 'prev');
+    }, { passive: true });
+
+    document.addEventListener('keydown', (e) => {
+      if (!albumBook.classList.contains('visible')) return;
+      if (e.key === 'ArrowLeft') goToPage(currentPage - 1, 'prev');
+      if (e.key === 'ArrowRight') goToPage(currentPage + 1, 'next');
+    });
+
+    loadPhotos().then(buildAlbum);
+
+    // ── Nikah countdown: June 2, 2026 ──
+    const nikahDate = new Date('2026-06-02T09:00:00');
+
+    function updateCountdown() {
+      const now = new Date();
+      const diff = nikahDate - now;
+
+      const countdownEl = document.getElementById('countdown');
+      const msgEl = document.getElementById('countdown-msg');
+      const arrivedEl = document.getElementById('countdown-arrived');
+
+      if (diff <= 0) {
+        countdownEl.style.display = 'none';
+        msgEl.style.display = 'none';
+        arrivedEl.style.display = 'block';
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      document.getElementById('days').textContent = String(days).padStart(2, '0');
+      document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+      document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+      document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    // ── Scroll reveal ──
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+    revealEls.forEach((el) => observer.observe(el));
   </script>
 </body>
 </html>
